@@ -1,18 +1,16 @@
 package com.example.cart.dto;
 
-import org.springframework.boot.configurationprocessor.json.JSONArray;
-
 import java.util.List;
 
 public class CartAndItemDto {
-    private List<MyItem> items;
+    private List<ClientItem> items;
     private Long totalQuantity;
 
     public Long getTotalQuantity() {
         return this.totalQuantity;
     }
 
-    public List<MyItem> getItems() {
+    public List<ClientItem> getItems() {
         return this.items;
     }
 }

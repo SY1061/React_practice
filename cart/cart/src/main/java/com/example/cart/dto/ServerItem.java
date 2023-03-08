@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Items {
+public class ServerItem {
     private String itemId;
+    private Long cartId;
     private String itemName;
     private Long itemPrice;
     private Long itemQuantity;
