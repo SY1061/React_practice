@@ -6,7 +6,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
-public class CartDto {
+public class Cart {
     private Long cartId;
     private Long totalQuantity;
 

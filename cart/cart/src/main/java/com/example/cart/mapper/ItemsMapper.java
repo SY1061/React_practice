@@ -11,8 +11,8 @@ import java.util.List;
 
 @Mapper
 public interface ItemsMapper {
-    @Select("select * from Items")
-    List<ServerItem> findAllItems();
+    @Select("select item_id, item_price, item_quantity, item_totalPrice, item_name from Items")
+    List<ClientItem> findAllItems();
 
     @Select("select * from Items where item_id=#{itemId}")
     ServerItem findItemById(String itemId);

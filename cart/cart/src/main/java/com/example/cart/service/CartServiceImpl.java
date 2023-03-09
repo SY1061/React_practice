@@ -1,7 +1,7 @@
 package com.example.cart.service;
 
 import com.example.cart.dto.CartAndItemDto;
-import com.example.cart.dto.CartDto;
+import com.example.cart.dto.Cart;
 import com.example.cart.dto.ClientItem;
 import com.example.cart.dto.ServerItem;
 import com.example.cart.mapper.CartMapper;
@@ -9,13 +9,27 @@ import com.example.cart.mapper.ItemsMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CartServiceImpl implements CartService{
     private final CartMapper cartMapper;
     private final ItemsMapper itemsMapper;
     // service 할 때마다 새로 생성하니까 cartId가 계속 생성되는 문제 발생해서 전역 변수로 둬야 할듯?
-    CartDto cart = new CartDto();
+    Cart cart = new Cart();
+
+    @Override
+    public CartAndItemDto getService() {
+        Long totalQuantity = cartMapper.findTotalQuantity();
+        List<ClientItem> allItems = itemsMapper.findAllItems();
+
+        // 클라이언트로 보낼 값 dto 내부에 저장.
+        CartAndItemDto cartAndItemDto = new CartAndItemDto();
+        cartAndItemDto.setItems(allItems);
+        cartAndItemDto.setTotalQuantity(totalQuantity);
+        return cartAndItemDto;
+    }
 
     @Override
     public void updateService(CartAndItemDto cartAndItemDto) {
