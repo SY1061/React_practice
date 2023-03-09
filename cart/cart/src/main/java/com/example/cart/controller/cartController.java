@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class cartController {
     private final CartService cartService;
 
-    // 여기부턴 내일.
+    @GetMapping
+    public CartAndItemDto getCart() {
+        return cartService.getService();
+    }
+
     @PutMapping
     public void modifyCart(@RequestBody CartAndItemDto cartAndItemDto) {
         cartService.updateService(cartAndItemDto);
